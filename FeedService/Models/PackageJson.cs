@@ -17,6 +17,7 @@ namespace FeedService.Models
     public string Custom { get; set; }
     [JsonPropertyName("authorinfo")]
     public Author AuthorInfo { get; set; }
+    [JsonPropertyName("main")]
     public string Main { get; set; }
     [JsonPropertyName("license")]
     public string License { get; set; }
