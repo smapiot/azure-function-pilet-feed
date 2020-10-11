@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -17,7 +17,7 @@ namespace FeedService.Models
         public string Version { get; set; }
         public bool Preview { get; set; }
         public string Custom { get; set; }
-        [JsonPropertyName("authoinfo")]
+        [JsonPropertyName("authorinfo")]
         public Author AuthorInfo { get; set; }
         public string Main { get; set; }
         public string Lincense { get; set; }
