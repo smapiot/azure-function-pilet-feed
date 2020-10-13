@@ -27,15 +27,13 @@ namespace FeedService
     {
       if (req.Method == HttpMethod.Post)
       {
-        var packageJsonData = new PackageJson();
         var formData = await req.Content.ReadAsMultipartAsync();
-        var packageFiles = new List<PackageFile>();
         var content = formData.Contents.First();
         var fileData = await content.ReadAsByteArrayAsync();
         await _piletService.PublishPilet(fileData);
         return new OkObjectResult("Success");
       }
-      var lastestPilets = await _piletService.GetLatestPilets();
+      var lastestPilets = await _piletService.GetLatestPiletsMetaData();
       return new OkObjectResult(lastestPilets);
     }
   }

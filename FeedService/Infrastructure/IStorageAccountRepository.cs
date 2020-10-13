@@ -1,15 +1,14 @@
-﻿using FeedService.Models;
-using System;
+using FeedService.Models;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace FeedService.Infrastructure
 {
-    public interface IStorageAccountRepository
-    {
-        Task<List<string>> GetLatestPiletsInfoAsync();
-        Task UploadPilet(List<PackageFile> packageFiles, PackageJson packageJson, byte[] zippedFiles);
-        Task<string> GetPiletFile(string fileName, string version, string piletName);
-    }
+  public interface IStorageAccountRepository
+  {
+    Task<List<string>> GetLatestPiletsPackageFiles();
+    Task UploadFiles(List<PackageFile> files);
+    Task<Stream> GetFile(string fileName, string version, string piletName);
+  }
 }

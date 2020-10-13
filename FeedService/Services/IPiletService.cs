@@ -1,15 +1,16 @@
-﻿using FeedService.Models;
-using System;
+using FeedService.Models;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace FeedService.Services
 {
-    public interface IPiletService
-    {
-        Task<PiletApiResponse> GetLatestPilets();
-        Task<bool> PublishPilet(byte[] fileData);
-        Task<string> GetPiletFile(string fileName, string version, string name);
-    }
+  public interface IPiletService
+  {
+    PackageJson ParsePackageJson(MemoryStream fileContents, string fileFullName);
+    Task<PiletApiResponse> GetLatestPiletsMetaData();
+    Task<bool> PublishPilet(byte[] fileData);
+    Task<Stream> GetPiletFile(string fileName, string version, string name);
+    List<PackageFile> ExtractFiles(byte[] fileData);
+  }
 }
