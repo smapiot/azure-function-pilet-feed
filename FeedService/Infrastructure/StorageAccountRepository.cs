@@ -77,6 +77,7 @@ namespace FeedService.Infrastructure
 
     private string GetConnectionString()
     {
+      //Add your connection string here.
       return "";
     }
   }
