@@ -5,7 +5,6 @@ using ICSharpCode.SharpZipLib.Tar;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -30,8 +29,7 @@ namespace FeedService.Services
       {
         var version = ExtractVersion(pilet);
         var name = ExtractName(pilet);
-        var url = "http://" + Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME") + "/api/pilet/" + name + "/" + version + "/index.js";
-
+        var url = GetUrl(name, version);
         piletResponse.Items.Add(new PiletMetaData
         {
           Name = name,
@@ -124,7 +122,14 @@ namespace FeedService.Services
 
     private string ExtractVersion(string pilet)
     {
-      return pilet.Split('/')[1].Substring(0, 5);
+      return pilet.Split('/')[1];
     }
+
+    private string GetUrl(string name, string version)
+    {
+      return (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "LocalDevelopment" ? "https://" : "http://")
+        + Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME") + "/api/pilet/" + name + "/" + version + "/index.js";
+    }
+
   }
 }

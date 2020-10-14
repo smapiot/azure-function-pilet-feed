@@ -13,9 +13,11 @@ namespace FeedService.Models
     public string Description { get; set; }
     [JsonPropertyName("version")]
     public string Version { get; set; }
+    [JsonPropertyName("preview")]
     public bool Preview { get; set; }
+    [JsonPropertyName("custom")]
     public string Custom { get; set; }
-    [JsonPropertyName("authorinfo")]
+    [JsonPropertyName("author")]
     public Author AuthorInfo { get; set; }
     [JsonPropertyName("main")]
     public string Main { get; set; }

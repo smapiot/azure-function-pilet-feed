@@ -24,8 +24,7 @@ namespace FeedService.Functions
     {
       var file = await _piletService.GetPiletFile(fileName, version, name);
       var provider = new FileExtensionContentTypeProvider();
-      string contentType;
-      if (!provider.TryGetContentType(fileName, out contentType))
+      if (!provider.TryGetContentType(fileName, out string contentType))
       {
         contentType = "application/octet-stream";
       }
