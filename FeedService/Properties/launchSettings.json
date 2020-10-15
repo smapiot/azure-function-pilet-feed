@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FeedService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
+      }
+    }
+  }
+}
